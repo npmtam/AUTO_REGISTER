@@ -146,4 +146,23 @@ public class AbstractPage {
             e.printStackTrace();
         }
     }
+
+    public String getPageTitle() {
+        return driver.getTitle();
+    }
+
+    public void closeAllWindowsWithoutParent() {
+        String parentID = driver.getWindowHandle();
+        Set<String> allWindows = driver.getWindowHandles();
+
+        for (String runWindows : allWindows) {
+
+            if (!runWindows.equals(parentID)) {
+                driver.switchTo().window(runWindows);
+                driver.close();
+            }
+        }
+        driver.switchTo().window(parentID);
+
+    }
 }

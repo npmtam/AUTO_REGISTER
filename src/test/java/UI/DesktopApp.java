@@ -1,7 +1,10 @@
 package UI;
 
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
+import java.io.IOException;
 
 public class DesktopApp {
 
@@ -45,7 +48,45 @@ public class DesktopApp {
         JTextField sleepTimeInput = new JTextField();
         sleepTimeInput.setBounds(300,120, 150, 20);
 
+        //Status Label
+        JLabel statusLabel = new JLabel("Status");
+        statusLabel.setBounds(30, 220, 300,30);
 
+        //Run button
+        JButton runBtn = new JButton("Run");
+        runBtn.setBounds(190, 170, 100, 30);
+
+        //Button action
+        runBtn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //Validate input
+                String browser = "chrome";
+                String test = "Sites.VuaKing";
+                String url = urlTextbox.getText();
+                String count = countInput.getText();
+                String sleep = sleepTimeInput.getText();
+                if(url.contains("http")){
+                    statusLabel.setText("URL khong nen chua http");
+                }
+                if (!count.matches("\\d+")){
+                    statusLabel.setText("Vui lòng chỉ nhập số");
+                } else if(!sleep.matches("\\d+")){
+                    statusLabel.setText("Vui lòng chỉ nhập số");
+                }
+                if(Integer.parseInt(sleep)>10){
+                    statusLabel.setText("Thời gian chờ không nên quá 10 giây");
+                }
+
+                //Run test
+                try {
+                      Process process = Runtime.getRuntime().exec("mvn.cmd clean test -Dbrowser=\"" + browser + "\" -Durl=\"" + url +"\" -DinvocationCount=\"" + count + "\" -DsleepAfterTest=\"" + sleep + "\" -Dtest=" + test);
+
+                } catch (IOException error) {
+                    error.printStackTrace();
+                }
+            }
+        });
 
 
         frame.add(typeLabel);
@@ -56,8 +97,10 @@ public class DesktopApp {
         frame.add(countInput);
         frame.add(sleepTimeLabel);
         frame.add(sleepTimeInput);
+        frame.add(runBtn);
+        frame.add(statusLabel);
         frame.setTitle("Auto Bet sites");
-        frame.setSize(500,250);
+        frame.setSize(500,300);
         frame.setLayout(null);
         frame.setVisible(true);
     }
