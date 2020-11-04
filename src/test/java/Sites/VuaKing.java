@@ -25,7 +25,6 @@ public class VuaKing extends AbstractTest {
     @Parameters({"browser", "invocationCount", "sleepAfterTest"})
     @Test
     public void register(String browserName, int invocationCount, int sleetAfterTest){
-        for(int i=1; i<=invocationCount; i++) {
             driver = getBrowserDriver(browserName);
             vuakingPage = new VuaKingPageObject(driver);
 
@@ -42,7 +41,6 @@ public class VuaKing extends AbstractTest {
             vuakingPage.writeDataToCsv(userName, password, url);
             vuakingPage.clickToRegister();
             vuakingPage.sleepInSecond(sleetAfterTest);
-        }
     }
 
     @AfterTest
