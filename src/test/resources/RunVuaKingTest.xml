@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="Check request Now" parallel="none">
+
+
+	<test name="RUN ON CHROME UI">
+		<method-selectors>
+			<method-selector>
+				<script language="beanshell">
+					<![CDATA[
+                testngMethod.setInvocationCount(2);
+                return true;
+                ]]>
+				</script>
+			</method-selector>
+		</method-selectors>
+		<parameter name="browser" value="chrome" />
+		<parameter name="isThereCSVFile" value="true" />
+		<classes>
+			<class name="Sites.VuaKing" />
+		</classes>
+	</test>
+
+</suite> <!-- Suite -->

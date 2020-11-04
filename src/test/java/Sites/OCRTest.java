@@ -1,3 +1,5 @@
+package Sites;
+
 import io.github.bonigarcia.wdm.WebDriverManager;
 import net.sourceforge.tess4j.ITesseract;
 import net.sourceforge.tess4j.Tesseract;
