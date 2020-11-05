@@ -81,9 +81,8 @@ public class DesktopApp {
                 //Run test
                 try {
                       Process process = Runtime.getRuntime().exec("mvn.cmd clean test -Dbrowser=\"" + browser + "\" -Durl=\"" + url +"\" -DinvocationCount=\"" + count + "\" -DsleepAfterTest=\"" + sleep + "\" -Dtest=" + test);
-
-                } catch (IOException error) {
-                    error.printStackTrace();
+                } catch (IOException error){
+                    statusLabel.setText("Đã có lỗi xảy ra");
                 }
             }
         });

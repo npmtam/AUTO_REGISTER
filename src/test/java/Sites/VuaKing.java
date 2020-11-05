@@ -31,8 +31,8 @@ public class VuaKing extends AbstractTest {
 
             driver.get("http:\\"+ url);
             vuakingPage.closeAllWindowsWithoutParent();
-            String userName = faker.name().firstName() + faker.number().randomNumber();
-            String password = faker.name().lastName() + faker.number().randomNumber();
+            String userName = vuakingPage.getFirstNameRandom() + vuakingPage.getLastNameRandom() + vuakingPage.getRandomNumber();
+            String password = vuakingPage.getLastNameRandom() + vuakingPage.getRandomNumber();
 
             vuakingPage.inputToUserName(userName);
             vuakingPage.inputToPassword(password);
@@ -40,8 +40,12 @@ public class VuaKing extends AbstractTest {
             String captcha = vuakingPage.getCaptcha();
             vuakingPage.inputToCaptcha(captcha);
             String currentURL = vuakingPage.getCurrentURL();
-            vuakingPage.writeDataToCsv(userName, password, currentURL);
             vuakingPage.clickToRegister();
+            verifyTrue(vuakingPage.isChatButtonDisplay());
+            if(Constants.REGISTERED){
+                vuakingPage.writeDataToCsv(userName, password, currentURL);
+            }
+
             vuakingPage.sleepInSecond(sleetAfterTest);
             closeBrowserAndDriver(driver);
         }

@@ -7,6 +7,8 @@ public class Constants {
     public static final String COMMA_DELIMITER = ",";
     public static final String NEW_LINE_SEPARATOR = "\n";
 
+    public static boolean REGISTERED = false;
+
 
     public static final String VUAKING = "http://vuaking.net/";
 }

@@ -8,4 +8,5 @@ public class VuaKingUI {
     public static final String CAPTCHA_TEXTBOX = "//input[@id='txtcapcha']";
     public static final String CAPTCHA_BOX = "//input[@id='mainCaptcha']";
     public static final String REGISTER_BUTTON = "//button[@class='btn btn-register']";
+    public static final String CHAT_BUTTON = "//a[contains(@aria-label, 'trò chuyện')]";
 }
