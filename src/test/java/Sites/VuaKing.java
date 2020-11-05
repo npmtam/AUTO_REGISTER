@@ -46,6 +46,7 @@ public class VuaKing extends AbstractTest {
                 vuakingPage.writeDataToCsv(userName, password, currentURL);
             }
 
+//            driver.get();
             vuakingPage.sleepInSecond(sleetAfterTest);
             closeBrowserAndDriver(driver);
         }
