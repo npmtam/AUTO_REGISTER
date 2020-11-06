@@ -3,9 +3,10 @@
 
 
 	<test name="RUN ON CHROME UI">
-		<parameter name="browser" value="chrome" />
-		<parameter name="invocationCount" value="2"/>
-		<parameter name="sleepAfterTest" value="10"/>
+		<parameter name="browser" value="1"/>
+		<parameter name="url" value="1"/>
+		<parameter name="invocationCount" value="1"/>
+		<parameter name="sleepAfterTest" value="2"/>
 		<classes>
 			<class name="Sites.VuaKing" />
 		</classes>

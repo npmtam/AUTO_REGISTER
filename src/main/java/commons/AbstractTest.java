@@ -29,7 +29,7 @@ public class AbstractTest {
 	public WebDriver getBrowserDriver(String browserName) {
 		switch (browserName) {
 			case "chrome":
-				File vpn = new File(rootFolder + "\\src\\main\\resources\\touchVPN.crx");
+				File vpn = new File(rootFolder + "\\src\\main\\resources\\anonymoX.crx");
 				WebDriverManager.chromedriver().setup();
 				ChromeOptions chromeOptions = new ChromeOptions();
 				chromeOptions.addArguments("--disable-notifications");

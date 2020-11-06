@@ -87,36 +87,10 @@
                 <version>2.19.1</version>
                 <configuration>
                     <includes>
-                        <include>**/*/CucumberTestRunner.java</include>
+                        <include>**/*/RunVuaKing.xml</include>
+
                     </includes>
                 </configuration>
-            </plugin>
-
-            <!--Generate report-->
-            <plugin>
-                <groupId>net.masterthought</groupId>
-                <artifactId>maven-cucumber-reporting</artifactId>
-                <version>3.20.0</version>
-                <executions>
-                    <execution>
-                        <id>execution</id>
-                        <phase>verify</phase>
-                        <goals>
-                            <goal>generate</goal>
-                        </goals>
-                        <configuration>
-                            <projectName>CHECK FUNCTIONS FOR FIREAPPS.IO</projectName>
-                            <outputDirectory>${project.build.directory}/site/cucumber-reporting</outputDirectory>
-                            <inputDirectory>${project.build.directory}/site</inputDirectory>
-                            <jsonFiles>
-                                <param>**/*.json</param>
-                            </jsonFiles>
-                            <!--<enableFlashCharts>true</enableFlashCharts>-->
-                            <!--<skippedFails>true</skippedFails-->
-                            <checkBuildResult>false</checkBuildResult>
-                        </configuration>
-                    </execution>
-                </executions>
             </plugin>
         </plugins>
     </build>

@@ -1,11 +1,14 @@
 package UI;
 
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
+import java.io.IOException;
 
 public class DesktopApp {
 
-    public static void main(String[] args){
+    public static void main(String[] args) {
         //Create windows
         JFrame frame = new JFrame();
 
@@ -39,13 +42,58 @@ public class DesktopApp {
 
         //Time sleep label
         JLabel sleepTimeLabel = new JLabel("Thời gian chờ sau khi tạo:");
-        sleepTimeLabel.setBounds(300, 100, 150,20);
+        sleepTimeLabel.setBounds(300, 100, 150, 20);
 
         //Time sleep input
         JTextField sleepTimeInput = new JTextField();
-        sleepTimeInput.setBounds(300,120, 150, 20);
+        sleepTimeInput.setBounds(300, 120, 150, 20);
 
+        //Status Label
+        JLabel statusLabel = new JLabel("Status");
+        statusLabel.setBounds(30, 220, 300, 30);
 
+        //Run button
+        JButton runBtn = new JButton("Run");
+        runBtn.setBounds(190, 170, 100, 30);
+
+        //Button action
+        runBtn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String browser = "chrome";
+                String test = "Sites.VuaKing";
+                String url = urlTextbox.getText();
+
+                //Get domain
+                String[] urlInputted = urlTextbox.getText().split("//");
+                String urlForCmd = urlInputted[1];
+
+                String count = countInput.getText();
+                String sleep = sleepTimeInput.getText();
+
+                if (!url.contains("http")) {
+                    statusLabel.setText("Vui lòng nhập đúng URL");
+                }
+                if (!count.matches("\\d+")) {
+                    statusLabel.setText("Vui lòng chỉ nhập số");
+                } else if (!sleep.matches("\\d+")) {
+                    statusLabel.setText("Vui lòng chỉ nhập số");
+                }
+                if (Integer.parseInt(sleep) > 10) {
+                    statusLabel.setText("Thời gian chờ không nên quá 10 giây");
+                }
+
+                //Run test
+                try {
+                System.out.println("mvn.cmd clean test -Dbrowser=\"" + browser + "\" -Durl=\"" + urlForCmd + "\" -DinvocationCount=\"" + count + "\" -DsleepAfterTest=\"" + sleep + "\" -Dtest=" + test);
+                    Process process = Runtime.getRuntime().exec("mvn.cmd clean test -Dbrowser=\"" + browser + "\" -Durl=\"" + urlForCmd + "\" -DinvocationCount=\"" + count + "\" -DsleepAfterTest=\"" + sleep + "\" -Dtest=" + test);
+
+                } catch (IOException error) {
+                    error.printStackTrace();
+                    statusLabel.setText("Đã có lỗi xảy ra " + error);
+                }
+            }
+        });
 
 
         frame.add(typeLabel);
@@ -56,8 +104,10 @@ public class DesktopApp {
         frame.add(countInput);
         frame.add(sleepTimeLabel);
         frame.add(sleepTimeInput);
+        frame.add(runBtn);
+        frame.add(statusLabel);
         frame.setTitle("Auto Bet sites");
-        frame.setSize(500,250);
+        frame.setSize(500, 300);
         frame.setLayout(null);
         frame.setVisible(true);
     }

@@ -13,6 +13,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
@@ -83,9 +84,8 @@ public class AbstractPage {
         driver.manage().timeouts().implicitlyWait(timeout, TimeUnit.SECONDS);
     }
 
-    public boolean isElementPresentInDOM(String locator, String attribute) {
+    public boolean isElementPresentInDOM(String locator) {
         overideGlobalTimeout(shortTimeout);
-        locator = String.format(locator, attribute);
         elements = driver.findElements(By.xpath(locator));
         overideGlobalTimeout(longTimeout);
         if (elements.size() > 0) {
@@ -145,5 +145,45 @@ public class AbstractPage {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+    }
+
+    public String getPageTitle() {
+        return driver.getTitle();
+    }
+
+    public void closeAllWindowsWithoutParent() {
+        String parentID = driver.getWindowHandle();
+        Set<String> allWindows = driver.getWindowHandles();
+
+        for (String runWindows : allWindows) {
+
+            if (!runWindows.equals(parentID)) {
+                driver.switchTo().window(runWindows);
+                driver.close();
+            }
+        }
+        driver.switchTo().window(parentID);
+    }
+
+    public String getFirstNameRandom() {
+        Random random = new Random();
+        final String[] firstName = new String[]{"nguyen", "do", "tran", "le", "pham", "phan", "vu", "dang", "hoang", "bui", "ho", "ly"};
+        int index = random.nextInt(firstName.length);
+        return firstName[index];
+    }
+
+    public String getLastNameRandom() {
+        Random random = new Random();
+        final String[] lastName = new String[]{"cuong", "tung", "thang", "son", "huy", "dung", "hung", "linh",
+                "hieu", "hiep", "luan", "nam", "long", "minh", "dat", "quang", "tam", "thanh", "chien", "duc", "vuong",
+                "phong", "tan", "quyen", "thi", "vinh", "quangvinh", "minhhoang", "hoanglong"};
+        int index = random.nextInt(lastName.length);
+        return lastName[index];
+    }
+
+    public int getRandomNumber(){
+        Random random = new Random();
+        int randomNumber = random.nextInt(999);
+        return randomNumber;
     }
 }

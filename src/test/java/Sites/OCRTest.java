@@ -3,6 +3,8 @@ package Sites;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import net.sourceforge.tess4j.ITesseract;
 import net.sourceforge.tess4j.Tesseract;
+import net.sourceforge.tess4j.TesseractException;
+import net.sourceforge.tess4j.util.LoadLibs;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -14,10 +16,14 @@ import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.net.URISyntaxException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.concurrent.TimeUnit;
 
 public class OCRTest {
     WebDriver driver;
+    private String imgPath;
 
     @BeforeClass
     public void beforeTest() {
@@ -26,12 +32,14 @@ public class OCRTest {
 
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
         driver.manage().window().maximize();
-        driver.get("http://vuaking.net/");
+        driver.get("http://rio66qc.club/");
+        String rootFolder = System.getProperty("user.dir");
+        imgPath = rootFolder + "\\src\\main\\resources\\captcha\\captcha.png";
     }
 
-    @Test
+//    @Test
     public void ocrTest() throws IOException {
-        WebElement element = driver.findElement(By.xpath("//input[@id='mainCaptcha']"));
+        WebElement element = driver.findElement(By.xpath("//img[@id='image']"));
         captureElementScreenshot(element);
 
         String imgPath = "C:\\Attachments\\screenshot.png";
@@ -56,6 +64,27 @@ public class OCRTest {
         } catch (Exception e) {
             System.out.println("Failed. Could not read the text from image file!");
         }
+    }
+
+    @Test
+    public void doOCR() throws IOException, URISyntaxException, TesseractException {
+        WebElement element = driver.findElement(By.xpath("//img[@id='image']"));
+//        WebElement element = driver.findElement(By.xpath("//input[@id='captchar']"));
+        captureElementScreenshot(element);
+
+        File tmpFolder = LoadLibs.extractTessResources("win32-64");
+        System.setProperty("java.library.path", tmpFolder.getPath());
+
+        Tesseract tesseract = new Tesseract();
+        tesseract.setLanguage("eng");
+        tesseract.setOcrEngineMode(1);
+
+        Path dataDirectory = Paths.get(ClassLoader.getSystemResource("data").toURI());
+        tesseract.setDatapath(dataDirectory.toString());
+
+        BufferedImage image = ImageIO.read(new File(imgPath));
+        String result = tesseract.doOCR(image);
+        System.out.println(result);
     }
 
 
@@ -85,6 +114,6 @@ public class OCRTest {
 
         //Used FileUtils class of apache.commons.io.
         //save Image screenshot In D: drive.
-        FileUtils.copyFile(screen, new File("C:\\Attachments\\screenshot.png"));
+        FileUtils.copyFile(screen, new File(imgPath));
     }
 }

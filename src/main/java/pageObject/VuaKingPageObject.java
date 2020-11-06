@@ -1,6 +1,7 @@
 package pageObject;
 
 import commons.AbstractPage;
+import commons.Constants;
 import org.omg.PortableInterceptor.SYSTEM_EXCEPTION;
 import org.openqa.selenium.WebDriver;
 import pageUI.VuaKingUI;
@@ -47,5 +48,15 @@ public class VuaKingPageObject extends AbstractPage {
     public void clickToRegister(){
         waitToElementClickable(VuaKingUI.REGISTER_BUTTON);
         clickToElement(VuaKingUI.REGISTER_BUTTON);
+    }
+
+    public boolean isChatButtonDisplay(){
+        boolean registered = isElementDisplayed(VuaKingUI.CHAT_BUTTON);
+        if(registered){
+            Constants.REGISTERED = true;
+        }else {
+            Constants.REGISTERED = false;
+        }
+        return registered;
     }
 }
