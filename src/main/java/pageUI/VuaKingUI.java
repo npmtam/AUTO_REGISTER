@@ -9,4 +9,5 @@ public class VuaKingUI {
     public static final String CAPTCHA_BOX = "//input[@id='mainCaptcha']";
     public static final String REGISTER_BUTTON = "//button[@class='btn btn-register']";
     public static final String CHAT_BUTTON = "//a[contains(@aria-label, 'trò chuyện')]";
+    public static final String LOGO = "//div[@id='homepages']";
 }

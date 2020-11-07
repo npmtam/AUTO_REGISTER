@@ -1,5 +1,8 @@
 package commons;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Constants {
 
     public static String ROOT_FOLDER = System.getProperty("user.dir");
@@ -8,7 +11,8 @@ public class Constants {
     public static final String NEW_LINE_SEPARATOR = "\n";
 
     public static boolean REGISTERED = false;
-
+    public static String IP_ADDRESS;
+    public static List<Integer> ACCOUNTS_SUCCESS = new ArrayList<Integer>();
 
     public static final String VUAKING = "http://vuaking.net/";
 }

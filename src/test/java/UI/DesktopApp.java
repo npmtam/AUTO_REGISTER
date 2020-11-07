@@ -1,17 +1,19 @@
 package UI;
 
+import commons.Constants;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
 import java.io.IOException;
+import java.io.PrintStream;
 
 public class DesktopApp {
 
     public static void main(String[] args) {
         //Create windows
         JFrame frame = new JFrame();
-
 
         //Label type of site
         JLabel typeLabel = new JLabel("Loại trang: ");
@@ -87,13 +89,20 @@ public class DesktopApp {
                 try {
                 System.out.println("mvn.cmd clean test -Dbrowser=\"" + browser + "\" -Durl=\"" + urlForCmd + "\" -DinvocationCount=\"" + count + "\" -DsleepAfterTest=\"" + sleep + "\" -Dtest=" + test);
                     Process process = Runtime.getRuntime().exec("mvn.cmd clean test -Dbrowser=\"" + browser + "\" -Durl=\"" + urlForCmd + "\" -DinvocationCount=\"" + count + "\" -DsleepAfterTest=\"" + sleep + "\" -Dtest=" + test);
-
+                    System.out.println(Constants.ACCOUNTS_SUCCESS);
                 } catch (IOException error) {
                     error.printStackTrace();
                     statusLabel.setText("Đã có lỗi xảy ra " + error);
                 }
             }
         });
+
+        JTextArea console = new JTextArea(5,10);
+        console.setBounds(500, 50, 440, 200);
+        PrintStream printStream = new PrintStream(new CustomOutputStream(console));
+        System.setOut(printStream);
+        System.setErr(printStream);
+
 
 
         frame.add(typeLabel);
@@ -106,8 +115,9 @@ public class DesktopApp {
         frame.add(sleepTimeInput);
         frame.add(runBtn);
         frame.add(statusLabel);
+        frame.add(console);
         frame.setTitle("Auto Bet sites");
-        frame.setSize(500, 300);
+        frame.setSize(1000, 300);
         frame.setLayout(null);
         frame.setVisible(true);
     }

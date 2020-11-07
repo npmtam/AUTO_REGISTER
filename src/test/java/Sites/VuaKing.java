@@ -4,7 +4,6 @@ import com.github.javafaker.Faker;
 import commons.AbstractTest;
 import commons.Constants;
 import org.openqa.selenium.WebDriver;
-import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
@@ -29,24 +28,47 @@ public class VuaKing extends AbstractTest {
             driver = getBrowserDriver(browserName);
             vuakingPage = new VuaKingPageObject(driver);
 
-            driver.get("http:\\"+ url);
-            vuakingPage.closeAllWindowsWithoutParent();
+            fakeIP();
+            getMyIPAddress();
+
+            log.info("Access URL");
+            driver.get("http://"+ url);
+
+            log.info("Vuaking - Close other tabs");
+//            vuakingPage.closeAllWindowsWithoutParent();
             String userName = vuakingPage.getFirstNameRandom() + vuakingPage.getLastNameRandom() + vuakingPage.getRandomNumber();
+            System.out.println(userName);
             String password = vuakingPage.getLastNameRandom() + vuakingPage.getRandomNumber();
 
+            log.info("Vuaking - Input user name");
             vuakingPage.inputToUserName(userName);
+
+            log.info("Vuaking - Input password and confirm password");
             vuakingPage.inputToPassword(password);
             vuakingPage.inputToConfirmPassword(password);
+
+            log.info("Vuaking - Get captcha");
             String captcha = vuakingPage.getCaptcha();
+
+            log.info("Vuaking - Input captcha");
             vuakingPage.inputToCaptcha(captcha);
+
+            log.info("Vuaking - Get current URL");
             String currentURL = vuakingPage.getCurrentURL();
+
+            log.info("Vuaking - Click to register");
             vuakingPage.clickToRegister();
-            verifyTrue(vuakingPage.isChatButtonDisplay());
+
+
+            log.info("Vuaking - Check the registration successfully");
+            verifyTrue(vuakingPage.isLogoDisplayed());
+
+            log.info("Vuaking - Check registration and write data to csv");
             if(Constants.REGISTERED){
-                vuakingPage.writeDataToCsv(userName, password, currentURL);
+                vuakingPage.writeDataToCsv(userName, password, currentURL, Constants.IP_ADDRESS);
+                Constants.ACCOUNTS_SUCCESS.add(i);
             }
 
-//            driver.get();
             vuakingPage.sleepInSecond(sleetAfterTest);
             closeBrowserAndDriver(driver);
         }

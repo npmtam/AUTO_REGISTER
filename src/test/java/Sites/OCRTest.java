@@ -1,5 +1,9 @@
 package Sites;
 
+import com.twocaptcha.TwoCaptcha;
+import com.twocaptcha.captcha.Normal;
+import commons.AbstractPage;
+import commons.AbstractTest;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import net.sourceforge.tess4j.ITesseract;
 import net.sourceforge.tess4j.Tesseract;
@@ -7,8 +11,6 @@ import net.sourceforge.tess4j.TesseractException;
 import net.sourceforge.tess4j.util.LoadLibs;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -19,20 +21,23 @@ import java.io.IOException;
 import java.net.URISyntaxException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.concurrent.TimeUnit;
 
-public class OCRTest {
+public class OCRTest extends AbstractTest {
     WebDriver driver;
     private String imgPath;
+    AbstractPage abstractPage;
 
     @BeforeClass
     public void beforeTest() {
         WebDriverManager.chromedriver().setup();
-        driver = new ChromeDriver();
+        driver = getBrowserDriver("chrome");
+        abstractPage = new AbstractPage(driver);
 
-        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-        driver.manage().window().maximize();
+        fakeIP();
+        getMyIPAddress();
+
         driver.get("http://rio66qc.club/");
+
         String rootFolder = System.getProperty("user.dir");
         imgPath = rootFolder + "\\src\\main\\resources\\captcha\\captcha.png";
     }
@@ -66,11 +71,10 @@ public class OCRTest {
         }
     }
 
-    @Test
+//    @Test
     public void doOCR() throws IOException, URISyntaxException, TesseractException {
-        WebElement element = driver.findElement(By.xpath("//img[@id='image']"));
-//        WebElement element = driver.findElement(By.xpath("//input[@id='captchar']"));
-        captureElementScreenshot(element);
+//        WebElement element = driver.findElement(By.xpath("//img[@id='image']"));
+
 
         File tmpFolder = LoadLibs.extractTessResources("win32-64");
         System.setProperty("java.library.path", tmpFolder.getPath());
@@ -85,6 +89,25 @@ public class OCRTest {
         BufferedImage image = ImageIO.read(new File(imgPath));
         String result = tesseract.doOCR(image);
         System.out.println(result);
+    }
+
+    @Test
+    public void solve2Captcha() throws IOException {
+        WebElement element = driver.findElement(By.xpath("//img[@id='image']"));
+        captureElementScreenshot(element);
+
+        TwoCaptcha solver = new TwoCaptcha("b73d2cdf3ba11f3dbdb8b77d4eb06281");
+
+        Normal captcha = new Normal();
+        captcha.setFile(imgPath);
+        captcha.setMaxLen(3);
+
+        try {
+            solver.solve(captcha);
+            System.out.println("Captcha solved: " + captcha.getCode());
+        } catch (Exception e) {
+            System.out.println("Error occurred: " + e.getMessage());
+        }
     }
 
 

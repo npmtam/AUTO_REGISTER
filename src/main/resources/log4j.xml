@@ -35,7 +35,7 @@
         </layout>
     </appender>
 
-    <category name="shopify">
+    <category name="Sites">
         <priority value="all" />
         <appender-ref ref="console" />
         <appender-ref ref="logfile" />
@@ -43,7 +43,7 @@
         <appender-ref ref="testng" />
     </category>
 
-    <category name="fireappsIO">
+    <category name="commons">
         <priority value="all" />
         <appender-ref ref="console" />
         <appender-ref ref="logfile" />
