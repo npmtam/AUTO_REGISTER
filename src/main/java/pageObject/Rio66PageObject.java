@@ -66,9 +66,9 @@ public class Rio66PageObject extends AbstractPage {
             Constants.CAPTCHA_SOLVED = captcha.getCode();
         } catch (Exception e) {
             System.out.println("Error occured: " + e.getMessage());
-            if(e.getMessage().equalsIgnoreCase("ERROR_CAPTCHA_UNSOLVABLE")){
+            if (e.getMessage().equalsIgnoreCase("ERROR_CAPTCHA_UNSOLVABLE")) {
                 solveCaptcha(apiKey);
-            } else if(e.getMessage().equalsIgnoreCase("ERROR_ZERO_BALANCE")){
+            } else if (e.getMessage().equalsIgnoreCase("ERROR_ZERO_BALANCE")) {
                 System.out.println("TÀI KHOẢN 2CAPTCHA ĐÃ HẾT TIỀN");
             }
         }
@@ -84,24 +84,13 @@ public class Rio66PageObject extends AbstractPage {
         waitToElementClickable(Rio66UI.REGISTER_BUTTON);
         clickToElement(Rio66UI.REGISTER_BUTTON);
 
-        if (isElementPresentInDOM(Rio66UI.ERROR_CAPTCHA)) {
-            //If incorrect captcha > re-solve captcha
-            if (getTextElement(Rio66UI.ERROR_CAPTCHA).contains("Mã xác nhận không đúng")) {
-                System.out.println(getTextElement(Rio66UI.ERROR_CAPTCHA));
-                System.out.println("Incorrect captcha");
-                getCaptchaImgBase64();
-                sleepInSecond(5);
-                inputToCaptchaTextbox(Constants.CAPTCHA_SOLVED);
-                clickToRegisterButton();
-            //If username invalid >
-            } else if (getTextElement(Rio66UI.ERROR_CAPTCHA).contains("không hợp lệ")) {
-                System.out.println("Username is invalid");
-                inputToUserName(backupUsername);
-                getCaptchaImgBase64();
-                sleepInSecond(5);
-                inputToCaptchaTextbox(Constants.CAPTCHA_SOLVED);
-                clickToRegisterButton();
-            }
+        while (isElementDisplayed(Rio66UI.ERROR_CAPTCHA)) {
+            inputToUserName(backupUsername);
+            getCaptchaImgBase64();
+//                sleepInSecond(5);
+            inputToCaptchaTextbox(Constants.CAPTCHA_SOLVED);
+            clickToElement(Rio66UI.REGISTER_BUTTON);
+            break;
         }
     }
 
@@ -113,7 +102,7 @@ public class Rio66PageObject extends AbstractPage {
     public void clickToConfirmRegister() {
         waitToElementClickable(Rio66UI.CONFIRM_REGISTER_BUTTON);
         clickToElement(Rio66UI.CONFIRM_REGISTER_BUTTON);
-        while(isElementPresentInDOM(Rio66UI.ERROR_CAPTCHA)){
+        while (isElementDisplayed(Rio66UI.ERROR_CAPTCHA)) {
             inputFullNameTextbox(backupUsername);
             break;
         }
@@ -123,7 +112,7 @@ public class Rio66PageObject extends AbstractPage {
 //        waitToElementVisible(Rio66UI.WELCOME_MSG);
 //        return getTextElement(Rio66UI.WELCOME_MSG).contains("Cảm ơn bạn đã đăng ký");
         boolean isWelcomeMsgDisplay = isElementDisplayed(Rio66UI.WELCOME_MSG);
-        if(isWelcomeMsgDisplay){
+        if (isWelcomeMsgDisplay) {
             Constants.REGISTERED = true;
         } else {
             Constants.REGISTERED = false;

@@ -19,6 +19,7 @@ public class Constants {
     public static final String VUAKING = "http://vuaking.net/";
 
     //Catpcha
+    public static final String API_KEY = "b73d2cdf3ba11f3dbdb8b77d4eb06281";
     public static String CAPTCHA_IMAGE_PATH = ROOT_FOLDER + "\\src\\main\\resources\\catpcha\\captcha.png";
     public static String CAPTCHA_SOLVED;
 }

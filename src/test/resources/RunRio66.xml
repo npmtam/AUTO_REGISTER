@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="Check request Now" parallel="none">
+
+
+	<test name="RUN ON CHROME UI">
+		<parameter name="browser" value="chrome"/>
+		<parameter name="url" value="rio66.club"/>
+		<parameter name="invocationCount" value="3"/>
+		<parameter name="sleepAfterTest" value="1"/>
+		<classes>
+			<class name="Sites.Rio66" />
+		</classes>
+	</test>
+
+</suite> <!-- Suite -->
