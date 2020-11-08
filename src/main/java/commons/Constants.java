@@ -12,7 +12,13 @@ public class Constants {
 
     public static boolean REGISTERED = false;
     public static String IP_ADDRESS;
+
+
     public static List<Integer> ACCOUNTS_SUCCESS = new ArrayList<Integer>();
 
     public static final String VUAKING = "http://vuaking.net/";
+
+    //Catpcha
+    public static String CAPTCHA_IMAGE_PATH = ROOT_FOLDER + "\\src\\main\\resources\\catpcha\\captcha.png";
+    public static String CAPTCHA_SOLVED;
 }

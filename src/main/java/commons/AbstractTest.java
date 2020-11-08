@@ -42,8 +42,12 @@ public class AbstractTest {
                 driver = new ChromeDriver(chromeOptions);
                 break;
             case "chrome_headless":
+                File vpn_headless = new File(rootFolder + "\\src\\main\\resources\\touchVPN.crx");
                 WebDriverManager.chromedriver().setup();
                 ChromeOptions options2 = new ChromeOptions();
+                options2.addExtensions(vpn_headless);
+                options2.setExperimentalOption("useAutomationExtension", false);
+                options2.setExperimentalOption("excludeSwitches", Collections.singletonList("enable-automation"));
 //                options2.addArguments("--incognito");
                 options2.setHeadless(true);
                 driver = new ChromeDriver(options2);

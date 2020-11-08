@@ -1,11 +1,15 @@
 package commons;
 
+import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -189,4 +193,46 @@ public class AbstractPage {
         return randomNumber;
     }
 
+    public void captureElementScreenshot(String locator) {
+        element = driver.findElement(By.xpath(locator));
+        //Capture entire page screenshot as buffer.
+        //Used TakesScreenshot, OutputType Interface of selenium and File class of java to capture screenshot of entire page.
+        File screen = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+
+        //Used selenium getSize() method to get height and width of element.
+        //Retrieve width of element.
+        int ImageWidth = element.getSize().getWidth();
+        //Retrieve height of element.
+        int ImageHeight = element.getSize().getHeight();
+
+        //Used selenium Point class to get x y coordinates of Image element.
+        //get location(x y coordinates) of the element.
+        Point point = element.getLocation();
+        int xcord = point.getX();
+        int ycord = point.getY();
+
+        //Reading full image screenshot.
+        BufferedImage img = null;
+        try {
+            img = ImageIO.read(screen);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        //cut Image using height, width and x y coordinates parameters.
+        BufferedImage dest = img.getSubimage(xcord, ycord, ImageWidth, ImageHeight);
+        try {
+            ImageIO.write(dest, "png", screen);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        //Used FileUtils class of apache.commons.io.
+        //save Image screenshot In D: drive.
+        try {
+            FileUtils.copyFile(screen, new File(Constants.CAPTCHA_IMAGE_PATH));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }

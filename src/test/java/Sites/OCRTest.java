@@ -21,6 +21,7 @@ import java.io.IOException;
 import java.net.URISyntaxException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Base64;
 
 public class OCRTest extends AbstractTest {
     WebDriver driver;
@@ -45,7 +46,8 @@ public class OCRTest extends AbstractTest {
 //    @Test
     public void ocrTest() throws IOException {
         WebElement element = driver.findElement(By.xpath("//img[@id='image']"));
-        captureElementScreenshot(element);
+//        captureElementScreenshot(element);
+        String linkCaptcha = element.getAttribute("src");
 
         String imgPath = "C:\\Attachments\\screenshot.png";
         File image = new File(imgPath);
@@ -95,12 +97,23 @@ public class OCRTest extends AbstractTest {
     public void solve2Captcha() throws IOException {
         WebElement element = driver.findElement(By.xpath("//img[@id='image']"));
         captureElementScreenshot(element);
+//        System.out.println(element.getAttribute("src"));
+//        String[] linkCaptcha = element.getAttribute("src").split(",");
+//        String base64Captcha = linkCaptcha[1];
+//        System.out.println(base64Captcha);
+        byte[] fileContent = FileUtils.readFileToByteArray(new File(imgPath));
+        String encodedString = Base64.getEncoder().encodeToString(fileContent);
+        System.out.println(encodedString);
+
+
 
         TwoCaptcha solver = new TwoCaptcha("b73d2cdf3ba11f3dbdb8b77d4eb06281");
 
         Normal captcha = new Normal();
-        captcha.setFile(imgPath);
-        captcha.setMaxLen(3);
+//        captcha.setFile();
+        captcha.setBase64(encodedString);
+        captcha.setLang("en");
+//        captcha.setMaxLen(3);
 
         try {
             solver.solve(captcha);

@@ -4,6 +4,7 @@ import com.github.javafaker.Faker;
 import commons.AbstractTest;
 import commons.Constants;
 import org.openqa.selenium.WebDriver;
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
@@ -18,7 +19,6 @@ public class VuaKing extends AbstractTest {
 
     @BeforeClass
     public void beforeClass() {
-        faker = new Faker(new Locale("en-US"));
     }
 
     @Parameters({"browser", "url", "invocationCount","sleepAfterTest"})
@@ -35,7 +35,6 @@ public class VuaKing extends AbstractTest {
             driver.get("http://"+ url);
 
             log.info("Vuaking - Close other tabs");
-//            vuakingPage.closeAllWindowsWithoutParent();
             String userName = vuakingPage.getFirstNameRandom() + vuakingPage.getLastNameRandom() + vuakingPage.getRandomNumber();
             System.out.println(userName);
             String password = vuakingPage.getLastNameRandom() + vuakingPage.getRandomNumber();
@@ -72,6 +71,7 @@ public class VuaKing extends AbstractTest {
             vuakingPage.sleepInSecond(sleetAfterTest);
             closeBrowserAndDriver(driver);
         }
+        System.out.println("TOTAL ACCOUNT CREATED: " + Constants.ACCOUNTS_SUCCESS.size());
     }
 
 }
