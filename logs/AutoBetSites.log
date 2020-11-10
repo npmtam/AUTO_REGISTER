@@ -1,0 +1,33 @@
+2020-11-10 13:46:35,072 INFO  Sites.VuaKing - Access VPN control page
+2020-11-10 13:46:35,382 INFO  Sites.VuaKing - Check if VPN did not activated
+2020-11-10 13:46:35,387 INFO  Sites.VuaKing - Connect VPN
+2020-11-10 13:46:35,438 INFO  Sites.VuaKing - Get my IP address
+2020-11-10 13:46:39,259 INFO  Sites.VuaKing - Access URL
+2020-11-10 13:46:43,210 INFO  Sites.VuaKing - Vuaking - Close other tabs
+2020-11-10 13:46:43,210 INFO  Sites.VuaKing - Vuaking - Input user name
+2020-11-10 13:46:43,347 INFO  Sites.VuaKing - Vuaking - Input password and confirm password
+2020-11-10 13:46:43,543 INFO  Sites.VuaKing - Vuaking - Get captcha
+2020-11-10 13:46:43,582 INFO  Sites.VuaKing - Vuaking - Input captcha
+2020-11-10 13:47:13,990 ERROR pageObject.VuaKingPageObject - CÓ LỖI XẢY RA - Không tìm thấy element
+2020-11-10 13:47:38,357 INFO  Sites.VuaKing - Access VPN control page
+2020-11-10 13:47:38,610 INFO  Sites.VuaKing - Check if VPN did not activated
+2020-11-10 13:47:38,692 INFO  Sites.VuaKing - Connect VPN
+2020-11-10 13:47:38,736 INFO  Sites.VuaKing - Get my IP address
+2020-11-10 13:47:42,661 INFO  Sites.VuaKing - Access URL
+2020-11-10 13:47:45,112 INFO  Sites.VuaKing - Vuaking - Close other tabs
+2020-11-10 13:47:45,113 INFO  Sites.VuaKing - Vuaking - Input user name
+2020-11-10 13:47:45,263 INFO  Sites.VuaKing - Vuaking - Input password and confirm password
+2020-11-10 13:47:45,490 INFO  Sites.VuaKing - Vuaking - Get captcha
+2020-11-10 13:47:45,529 INFO  Sites.VuaKing - Vuaking - Input captcha
+2020-11-10 13:48:15,598 ERROR pageObject.VuaKingPageObject - CÓ LỖI XẢY RA - Không tìm thấy element
+2020-11-10 14:31:44,780 INFO  Sites.VuaKing - Access VPN control page
+2020-11-10 14:31:45,159 INFO  Sites.VuaKing - Check if VPN did not activated
+2020-11-10 14:31:45,163 INFO  Sites.VuaKing - Connect VPN
+2020-11-10 14:31:45,210 INFO  Sites.VuaKing - Get my IP address
+2020-11-10 14:31:50,774 INFO  Sites.VuaKing - Access URL
+2020-11-10 14:31:53,883 INFO  Sites.VuaKing - Vuaking - Close other tabs
+2020-11-10 14:31:53,883 INFO  Sites.VuaKing - Vuaking - Input user name
+2020-11-10 14:31:54,033 INFO  Sites.VuaKing - Vuaking - Input password and confirm password
+2020-11-10 14:31:54,272 INFO  Sites.VuaKing - Vuaking - Get captcha
+2020-11-10 14:31:54,321 INFO  Sites.VuaKing - Vuaking - Input captcha
+2020-11-10 14:32:24,356 ERROR pageObject.VuaKingPageObject - CÓ LỖI XẢY RA - Không tìm thấy element
