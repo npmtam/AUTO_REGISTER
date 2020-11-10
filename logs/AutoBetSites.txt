@@ -1,11 +1,15 @@
-2020-11-10 14:31:44,780 INFO  Sites.VuaKing - Access VPN control page
-2020-11-10 14:31:45,159 INFO  Sites.VuaKing - Check if VPN did not activated
-2020-11-10 14:31:45,163 INFO  Sites.VuaKing - Connect VPN
-2020-11-10 14:31:45,210 INFO  Sites.VuaKing - Get my IP address
-2020-11-10 14:31:50,774 INFO  Sites.VuaKing - Access URL
-2020-11-10 14:31:53,883 INFO  Sites.VuaKing - Vuaking - Close other tabs
-2020-11-10 14:31:53,883 INFO  Sites.VuaKing - Vuaking - Input user name
-2020-11-10 14:31:54,033 INFO  Sites.VuaKing - Vuaking - Input password and confirm password
-2020-11-10 14:31:54,272 INFO  Sites.VuaKing - Vuaking - Get captcha
-2020-11-10 14:31:54,321 INFO  Sites.VuaKing - Vuaking - Input captcha
-2020-11-10 14:32:24,356 ERROR pageObject.VuaKingPageObject - CÓ LỖI XẢY RA - Không tìm thấy element
+2020-11-10 22:08:35,495 INFO  Sites.NgoaiHang88 - Access VPN control page
+2020-11-10 22:08:35,738 INFO  Sites.NgoaiHang88 - Check if VPN did not activated
+2020-11-10 22:08:35,742 INFO  Sites.NgoaiHang88 - Connect VPN
+2020-11-10 22:08:35,790 INFO  Sites.NgoaiHang88 - Get my IP address
+2020-11-10 22:08:53,145 INFO  Sites.NgoaiHang88 - NgoaiHang88 - Access site
+2020-11-10 22:09:23,396 INFO  Sites.NgoaiHang88 - NgoaiHang88 - Input username
+2020-11-10 22:09:23,518 INFO  Sites.NgoaiHang88 - NgoaiHang88 - Input passsword
+2020-11-10 22:09:23,606 INFO  Sites.NgoaiHang88 - NgoaiHang88 - Input email
+2020-11-10 22:09:23,703 INFO  Sites.NgoaiHang88 - NgoaiHang88 - Input phone number
+2020-11-10 22:09:23,798 INFO  Sites.NgoaiHang88 - NgoaiHang88 - Click to register
+2020-11-10 22:09:48,322 INFO  Sites.NgoaiHang88 - NgoaiHang88 - Write data to file
+2020-11-10 22:09:48,326 INFO  Sites.NgoaiHang88 -  -------------------------- PASSED -------------------------- 
+2020-11-10 22:09:48,327 INFO  Sites.NgoaiHang88 - NgoaiHang88 - Close browser
+2020-11-10 22:09:48,327 INFO  Sites.NgoaiHang88 - OS Name = windows 10
+2020-11-10 22:09:49,126 INFO  Sites.NgoaiHang88 - ----------------QUIT BROWSER SUCCESS-----------------

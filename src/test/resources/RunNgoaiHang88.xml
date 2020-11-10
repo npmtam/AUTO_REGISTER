@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="Check request Now" parallel="none">
+
+
+	<test name="RUN ON CHROME UI">
+		<parameter name="browser" value="chrome"/>
+		<parameter name="url" value="ngoaihang88.com"/>
+		<parameter name="invocationCount" value="2"/>
+		<parameter name="sleepAfterTest" value="1"/>
+		<classes>
+			<class name="Sites.NgoaiHang88" />
+		</classes>
+	</test>
+
+</suite> <!-- Suite -->
