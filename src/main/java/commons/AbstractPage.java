@@ -67,6 +67,13 @@ public class AbstractPage {
         element.click();
     }
 
+
+    public void clickToElementByJS(String locator) {
+        element = driver.findElement(By.xpath(locator));
+        JavascriptExecutor javascript = (JavascriptExecutor) driver;
+        javascript.executeScript("arguments[0].click();", element);
+    }
+
     public void sendKeyToElement(String locator, String value) {
         element = findElement(locator);
         element.clear();
@@ -202,6 +209,34 @@ public class AbstractPage {
         return firstName[index];
     }
 
+    public String getPhoneNumberRandom() {
+        int num1; //3 numbers in area code
+        int set2; //sequence 2 and 3 of the phone number
+
+        Random generator = new Random();
+
+        //Area code number; Will not print 8 or 9
+        num1 = generator.nextInt(7) + 1; //add 1 so there is no 0 to begin
+//        num2 = generator.nextInt(8); //randomize to 8 becuase 0 counts as a number in the generator
+//        num3 = generator.nextInt(8);
+
+        // Sequence two of phone number
+        // the plus 100 is so there will always be a 3 digit number
+        // randomize to 643 because 0 starts the first placement so if i randomized up to 642 it would only go up yo 641 plus 100
+        // and i used 643 so when it adds 100 it will not succeed 742
+        set2 = generator.nextInt(643) + 1000000000;
+
+        int phoneNumber = num1 + set2;
+        System.out.println (phoneNumber );
+        String newPhonenumber =Integer.toString(phoneNumber);
+        return newPhonenumber;
+
+
+
+    }
+
+
+
     public String getLastNameRandom() {
         Random random = new Random();
         final String[] lastName = new String[]{"cuong", "tung", "thang", "son", "huy", "dung", "hung", "linh",
@@ -209,6 +244,17 @@ public class AbstractPage {
                 "phong", "tan", "quyen", "thi", "vinh", "quangvinh", "minhhoang", "hoanglong", "hoa", "ngoc", "phung",
                 "sen", "tien", "congcuong", "huuloc", "minhthien", "thanhphuong", "trong", "minhcong", "dinhtuan",
                 "hungdung", "tranthanh", "huuhoang", "huyloc", "hahoang", "thanhphong", "quocdinh", "ngochai"};
+        int index = random.nextInt(lastName.length);
+        return lastName[index];
+    }
+
+    public String getLastNameRandomForJbo064() {
+        Random random = new Random();
+        final String[] lastName = new String[]{"cuong", "tung", "thang", "son", "huy", "dung", "hung", "linh",
+                "hieu", "hiep", "luan", "nam", "long", "minh", "dat", "quang", "tam", "thanh", "chien", "duc", "vuong",
+                "phong", "tan", "quyen", "thi", "vinh", "vinh", "minh", "long", "hoa", "ngoc", "phung",
+                "sen", "tien", "cong", "huuloc", "thien", "thanh", "trong", "minhcong", "tuan",
+                "dung", "thanh", "huu", "loc", "ha", "thphon", "dinh", "hai"};
         int index = random.nextInt(lastName.length);
         return lastName[index];
     }
