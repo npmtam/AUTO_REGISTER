@@ -53,6 +53,15 @@ public class AbstractTest {
                 options2.setHeadless(true);
                 driver = new ChromeDriver(options2);
                 break;
+            case "chrome_no_vpn":
+                WebDriverManager.chromedriver().setup();
+                ChromeOptions option3 = new ChromeOptions();
+                option3.addArguments("--disable-notifications");
+                option3.setExperimentalOption("useAutomationExtension", false);
+                option3.setExperimentalOption("useAutomationExtension", false);
+                option3.setExperimentalOption("excludeSwitches", Collections.singletonList("enable-automation"));
+                driver = new ChromeDriver(option3);
+                break;
             default:
                 System.out.println("Please input your browser name!");
                 break;
@@ -212,7 +221,7 @@ public class AbstractTest {
         }
         String ipv4 = driver.findElement(By.xpath("//div[@id='ipv4']/a")).getText();
         String city = driver.findElement(By.xpath("//th[text()='City:']/following-sibling::td")).getText();
-        System.out.println(ipTitle + ipv4);
+        System.out.println(ipv4);
 
         Constants.IP_ADDRESS = ipv4;
         System.out.println("City: " + city);
