@@ -31,3 +31,48 @@
 2020-11-10 14:31:54,272 INFO  Sites.VuaKing - Vuaking - Get captcha
 2020-11-10 14:31:54,321 INFO  Sites.VuaKing - Vuaking - Input captcha
 2020-11-10 14:32:24,356 ERROR pageObject.VuaKingPageObject - CÓ LỖI XẢY RA - Không tìm thấy element
+2020-11-10 15:32:03,934 INFO  Sites.VuaKing - Access VPN control page
+2020-11-10 15:32:04,197 INFO  Sites.VuaKing - Check if VPN did not activated
+2020-11-10 15:32:04,266 INFO  Sites.VuaKing - Connect VPN
+2020-11-10 15:32:04,328 INFO  Sites.VuaKing - Get my IP address
+2020-11-10 15:32:09,309 INFO  Sites.VuaKing - Access URL
+2020-11-10 15:32:12,092 INFO  Sites.VuaKing - Vuaking - Close other tabs
+2020-11-10 15:32:12,092 INFO  Sites.VuaKing - Vuaking - Input user name
+2020-11-10 15:32:12,244 INFO  Sites.VuaKing - Vuaking - Input password and confirm password
+2020-11-10 15:32:12,460 INFO  Sites.VuaKing - Vuaking - Get captcha
+2020-11-10 15:32:12,497 INFO  Sites.VuaKing - Vuaking - Input captcha
+2020-11-10 15:32:42,603 ERROR pageObject.VuaKingPageObject - CÓ LỖI XẢY RA - Không tìm thấy element
+2020-11-10 15:34:00,438 INFO  Sites.VuaKing - Access VPN control page
+2020-11-10 15:34:00,676 INFO  Sites.VuaKing - Check if VPN did not activated
+2020-11-10 15:34:00,747 INFO  Sites.VuaKing - Connect VPN
+2020-11-10 15:34:00,797 INFO  Sites.VuaKing - Get my IP address
+2020-11-10 15:34:05,326 INFO  Sites.VuaKing - Access URL
+2020-11-10 15:34:08,440 INFO  Sites.VuaKing - Vuaking - Close other tabs
+2020-11-10 15:34:08,440 INFO  Sites.VuaKing - Vuaking - Input user name
+2020-11-10 15:34:08,565 INFO  Sites.VuaKing - Vuaking - Input password and confirm password
+2020-11-10 15:34:08,796 INFO  Sites.VuaKing - Vuaking - Get captcha
+2020-11-10 15:34:08,833 INFO  Sites.VuaKing - Vuaking - Input captcha
+2020-11-10 15:34:08,926 INFO  Sites.VuaKing - Vuaking - Get current URL
+2020-11-10 15:34:08,930 INFO  Sites.VuaKing - Vuaking - Click to register
+2020-11-10 15:34:09,003 INFO  Sites.VuaKing - Vuaking - Check the registration successfully
+2020-11-10 15:34:19,077 INFO  Sites.VuaKing -  -------------------------- FAILED -------------------------- 
+2020-11-10 15:34:19,080 INFO  Sites.VuaKing - Vuaking - Check registration and write data to csv
+2020-11-10 15:34:21,081 INFO  Sites.VuaKing - OS Name = windows 10
+2020-11-10 15:34:21,847 INFO  Sites.VuaKing - ----------------QUIT BROWSER SUCCESS-----------------
+2020-11-10 15:34:43,574 INFO  Sites.VuaKing - Access VPN control page
+2020-11-10 15:34:43,819 INFO  Sites.VuaKing - Check if VPN did not activated
+2020-11-10 15:34:43,900 INFO  Sites.VuaKing - Connect VPN
+2020-11-10 15:34:43,943 INFO  Sites.VuaKing - Get my IP address
+2020-11-10 15:34:49,639 INFO  Sites.VuaKing - Access URL
+2020-11-10 15:34:55,267 INFO  Sites.VuaKing - Vuaking - Close other tabs
+2020-11-10 15:34:55,267 INFO  Sites.VuaKing - Vuaking - Input user name
+2020-11-10 15:34:55,403 INFO  Sites.VuaKing - Vuaking - Input password and confirm password
+2020-11-10 15:34:55,633 INFO  Sites.VuaKing - Vuaking - Get captcha
+2020-11-10 15:34:55,674 INFO  Sites.VuaKing - Vuaking - Input captcha
+2020-11-10 15:34:55,771 INFO  Sites.VuaKing - Vuaking - Get current URL
+2020-11-10 15:34:55,775 INFO  Sites.VuaKing - Vuaking - Click to register
+2020-11-10 15:34:55,848 INFO  Sites.VuaKing - Vuaking - Check the registration successfully
+2020-11-10 15:35:09,810 INFO  Sites.VuaKing -  -------------------------- PASSED -------------------------- 
+2020-11-10 15:35:09,812 INFO  Sites.VuaKing - Vuaking - Check registration and write data to csv
+2020-11-10 15:35:11,814 INFO  Sites.VuaKing - OS Name = windows 10
+2020-11-10 15:35:12,610 INFO  Sites.VuaKing - ----------------QUIT BROWSER SUCCESS-----------------

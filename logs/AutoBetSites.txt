@@ -1,11 +1,17 @@
-2020-11-10 14:31:44,780 INFO  Sites.VuaKing - Access VPN control page
-2020-11-10 14:31:45,159 INFO  Sites.VuaKing - Check if VPN did not activated
-2020-11-10 14:31:45,163 INFO  Sites.VuaKing - Connect VPN
-2020-11-10 14:31:45,210 INFO  Sites.VuaKing - Get my IP address
-2020-11-10 14:31:50,774 INFO  Sites.VuaKing - Access URL
-2020-11-10 14:31:53,883 INFO  Sites.VuaKing - Vuaking - Close other tabs
-2020-11-10 14:31:53,883 INFO  Sites.VuaKing - Vuaking - Input user name
-2020-11-10 14:31:54,033 INFO  Sites.VuaKing - Vuaking - Input password and confirm password
-2020-11-10 14:31:54,272 INFO  Sites.VuaKing - Vuaking - Get captcha
-2020-11-10 14:31:54,321 INFO  Sites.VuaKing - Vuaking - Input captcha
-2020-11-10 14:32:24,356 ERROR pageObject.VuaKingPageObject - CÓ LỖI XẢY RA - Không tìm thấy element
+2020-11-10 15:34:43,574 INFO  Sites.VuaKing - Access VPN control page
+2020-11-10 15:34:43,819 INFO  Sites.VuaKing - Check if VPN did not activated
+2020-11-10 15:34:43,900 INFO  Sites.VuaKing - Connect VPN
+2020-11-10 15:34:43,943 INFO  Sites.VuaKing - Get my IP address
+2020-11-10 15:34:49,639 INFO  Sites.VuaKing - Access URL
+2020-11-10 15:34:55,267 INFO  Sites.VuaKing - Vuaking - Close other tabs
+2020-11-10 15:34:55,267 INFO  Sites.VuaKing - Vuaking - Input user name
+2020-11-10 15:34:55,403 INFO  Sites.VuaKing - Vuaking - Input password and confirm password
+2020-11-10 15:34:55,633 INFO  Sites.VuaKing - Vuaking - Get captcha
+2020-11-10 15:34:55,674 INFO  Sites.VuaKing - Vuaking - Input captcha
+2020-11-10 15:34:55,771 INFO  Sites.VuaKing - Vuaking - Get current URL
+2020-11-10 15:34:55,775 INFO  Sites.VuaKing - Vuaking - Click to register
+2020-11-10 15:34:55,848 INFO  Sites.VuaKing - Vuaking - Check the registration successfully
+2020-11-10 15:35:09,810 INFO  Sites.VuaKing -  -------------------------- PASSED -------------------------- 
+2020-11-10 15:35:09,812 INFO  Sites.VuaKing - Vuaking - Check registration and write data to csv
+2020-11-10 15:35:11,814 INFO  Sites.VuaKing - OS Name = windows 10
+2020-11-10 15:35:12,610 INFO  Sites.VuaKing - ----------------QUIT BROWSER SUCCESS-----------------
