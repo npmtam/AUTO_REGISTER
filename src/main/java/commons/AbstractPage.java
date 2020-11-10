@@ -32,7 +32,7 @@ public class AbstractPage {
     List<WebElement> elements;
     Set<String> allWindows;
     Actions action;
-    long shortTimeout = 10;
+    long shortTimeout = 5;
     long midTimeout = 5;
     long longTimeout = 30;
     public final Log log;
@@ -113,6 +113,8 @@ public class AbstractPage {
             return false;
         }
     }
+
+
 
     public void waitToElementVisible(String locator) {
         by = By.xpath(locator);
