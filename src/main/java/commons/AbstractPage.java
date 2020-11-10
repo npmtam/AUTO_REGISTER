@@ -1,6 +1,8 @@
 package commons;
 
 import org.apache.commons.io.FileUtils;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -14,9 +16,11 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Random;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
+import java.util.concurrent.TimeoutException;
 
 public class AbstractPage {
     WebDriver driver;
@@ -31,11 +35,13 @@ public class AbstractPage {
     long shortTimeout = 10;
     long midTimeout = 5;
     long longTimeout = 30;
+    public final Log log;
 
 
     public AbstractPage(WebDriver driver) {
         this.driver = driver;
         action = new Actions(driver);
+        log = LogFactory.getLog(getClass());
     }
 
     public String getCurrentPageURL() {
@@ -44,29 +50,41 @@ public class AbstractPage {
 
     /* WEB ELEMENTS */
 
+    //throw exception
+    public WebElement findElement(String locator) {
+        try {
+            element = driver.findElement(By.xpath(locator));
+        } catch (NoSuchElementException e) {
+            log.info("CÓ LỖI XẢY RA - Không thể tìm thấy element");
+            e.printStackTrace();
+            driver.quit();
+        }
+        return element;
+    }
+
     public void clickToElement(String locator) {
-        element = driver.findElement(By.xpath(locator));
+        element = findElement(locator);
         element.click();
     }
 
     public void sendKeyToElement(String locator, String value) {
-        element = driver.findElement(By.xpath(locator));
+        element = findElement(locator);
         element.clear();
         element.sendKeys(value);
     }
 
     public String getAttributeValue(String locator, String attributeName) {
-        element = driver.findElement(By.xpath(locator));
+        element = findElement(locator);
         return element.getAttribute(attributeName);
     }
 
     public String getTextElement(String locator) {
-        element = driver.findElement(By.xpath(locator));
+        element = findElement(locator);
         return element.getText();
     }
 
     public boolean isElementDisplayed(String locator) {
-        element = driver.findElement(By.xpath(locator));
+        element = findElement(locator);
         return element.isDisplayed();
     }
 
@@ -98,8 +116,14 @@ public class AbstractPage {
 
     public void waitToElementVisible(String locator) {
         by = By.xpath(locator);
-        waitExplicit = new WebDriverWait(driver, longTimeout);
-        waitExplicit.until(ExpectedConditions.visibilityOfElementLocated(by));
+        try {
+            waitExplicit = new WebDriverWait(driver, longTimeout);
+            waitExplicit.until(ExpectedConditions.visibilityOfElementLocated(by));
+        }catch (Exception e){
+            log.error("CÓ LỖI XẢY RA - Không tìm thấy element");
+            e.printStackTrace();
+            driver.quit();
+        }
     }
 
     public void waitToElementClickable(String locator) {
@@ -171,7 +195,7 @@ public class AbstractPage {
     public String getFirstNameRandom() {
         Random random = new Random();
         final String[] firstName = new String[]{"nguyen", "do", "tran", "le", "pham", "phan", "vu", "dang", "hoang",
-        "bui", "ho", "ly","truong","nguyenle","nguyentran", "tranvo", "vo"};
+                "bui", "ho", "ly", "truong", "nguyenle", "nguyentran", "tranvo", "vo"};
         int index = random.nextInt(firstName.length);
         return firstName[index];
     }
@@ -187,14 +211,14 @@ public class AbstractPage {
         return lastName[index];
     }
 
-    public int getRandomNumber(){
+    public int getRandomNumber() {
         Random random = new Random();
         int randomNumber = random.nextInt(9999);
         return randomNumber;
     }
 
     public void captureElementScreenshot(String locator) {
-        element = driver.findElement(By.xpath(locator));
+        element = findElement(locator);
         //Capture entire page screenshot as buffer.
         //Used TakesScreenshot, OutputType Interface of selenium and File class of java to capture screenshot of entire page.
         File screen = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);

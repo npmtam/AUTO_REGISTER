@@ -11,7 +11,7 @@
     </appender>
 
     <appender name="logfile" class="org.apache.log4j.FileAppender">
-        <param name="File" value="./logs/NopCommerce.txt" />
+        <param name="File" value="./logs/AutoBetSites.txt" />
         <param name="Append" value="false" />
         <layout class="org.apache.log4j.PatternLayout">
             <param name="ConversionPattern" value="%d %-5p %c - %m%n" />
@@ -19,7 +19,7 @@
     </appender>
 
     <appender name="file" class="org.apache.log4j.RollingFileAppender">
-        <param name="file" value="./logs/NopCommerce.log" />
+        <param name="file" value="./logs/AutoBetSites.log" />
         <param name="append" value="true" />
         <param name="maxFileSize" value="10MB" />
         <param name="maxBackupIndex" value="10" />
@@ -44,6 +44,14 @@
     </category>
 
     <category name="commons">
+        <priority value="all" />
+        <appender-ref ref="console" />
+        <appender-ref ref="logfile" />
+        <appender-ref ref="file" />
+        <appender-ref ref="testng" />
+    </category>
+
+    <category name="pageObject">
         <priority value="all" />
         <appender-ref ref="console" />
         <appender-ref ref="logfile" />

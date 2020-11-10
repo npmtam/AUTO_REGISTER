@@ -16,6 +16,7 @@ import org.testng.Reporter;
 import java.io.File;
 import java.util.Collections;
 import java.util.concurrent.TimeUnit;
+import java.util.concurrent.TimeoutException;
 
 public class AbstractTest {
     private WebDriver driver;

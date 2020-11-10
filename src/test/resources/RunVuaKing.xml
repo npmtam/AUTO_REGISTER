@@ -3,8 +3,8 @@
 
 
 	<test name="RUN ON CHROME UI">
-		<parameter name="browser" value="1"/>
-		<parameter name="url" value="1"/>
+		<parameter name="browser" value="chrome"/>
+		<parameter name="url" value="vuaking.net"/>
 		<parameter name="invocationCount" value="1"/>
 		<parameter name="sleepAfterTest" value="2"/>
 		<classes>

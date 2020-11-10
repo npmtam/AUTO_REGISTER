@@ -33,7 +33,6 @@ public class VuaKingPageObject extends AbstractPage {
     public String getCaptcha() {
         waitToElementVisible(VuaKingUI.CAPTCHA_BOX);
         String captcha = getAttributeValue(VuaKingUI.CAPTCHA_BOX, "value");
-        System.out.println(captcha);
         return captcha;
     }
 
