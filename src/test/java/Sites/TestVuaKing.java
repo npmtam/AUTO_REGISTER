@@ -18,7 +18,7 @@ public class TestVuaKing extends AbstractTest {
         driver = getBrowserDriver("chrome");
         vuakingPage = new VuaKingPageObject(driver);
 
-        driver.get("https://www.expressvpn.com/what-is-my-ip?");
+        driver.get("http://rio66qc.club/");
     }
 
     @Test
@@ -39,7 +39,9 @@ public class TestVuaKing extends AbstractTest {
 //            vuakingPage.writeDataToCsv(userName, password, currentURL);
 //        }
 
-        String IP = driver.findElement(By.xpath("//p[@class='ip-address']")).getText();
-        System.out.println(IP);
+//        String IP = driver.findElement(By.xpath("//p[@class='ip-address']")).getText();
+//        System.out.println(IP);
+//        vuakingPage.clickToSolveCaptcha("//img[@id='image']");
+          driver.findElement(By.xpath("//div[@class='test']"));
     }
 }
