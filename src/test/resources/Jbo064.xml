@@ -5,7 +5,7 @@
 	<test name="RUN ON CHROME UI">
 		<parameter name="browser" value="chrome"/>
 		<parameter name="url" value="jbo064.com"/>
-		<parameter name="invocationCount" value="1"/>
+		<parameter name="invocationCount" value="2"/>
 		<parameter name="sleepAfterTest" value="2"/>
 		<classes>
 			<class name="Sites.Jbo064" />

@@ -64,6 +64,10 @@ public class Jbo064PageObject extends AbstractPage {
         clickToElement(Jbo064UI.CONFIRM_REGISTER_BUTTON);
     }
 
+    public String getCurrentURL() {
+        return getCurrentPageURL();
+    }
+
 //    public boolean isTheWelcomeMsgDisplay() {
 ////        waitToElementVisible(Rio66UI.WELCOME_MSG);
 ////        return getTextElement(Rio66UI.WELCOME_MSG).contains("Cảm ơn bạn đã đăng ký");

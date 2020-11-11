@@ -31,17 +31,6 @@ public class VuaKing extends AbstractTest {
             driver = getBrowserDriver(browserName);
             vuakingPage = new VuaKingPageObject(driver);
 
-            File logFile = new File(Constants.LOG_PATH);
-            Scanner read = null;
-            try {
-                read = new Scanner(logFile);
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-            }
-
-            while(read.hasNextLine()){
-                System.out.println(read.nextLine());
-            }
             fakeIP();
             getMyIPAddress();
 
