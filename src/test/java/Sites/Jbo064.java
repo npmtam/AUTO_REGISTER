@@ -3,6 +3,7 @@ package Sites;
 import commons.AbstractTest;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import pageObject.Jbo064PageObject;
@@ -34,5 +35,10 @@ public class Jbo064 extends AbstractTest {
         jbo064Page.clickToTermRadioButton();
         jbo064Page.clickToConfirmRegister();
 
+    }
+
+    @AfterClass
+    public void afterClass() {
+        closeBrowserAndDriver(driver);
     }
 }
