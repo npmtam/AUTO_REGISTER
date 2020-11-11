@@ -4,11 +4,11 @@
 
 	<test name="RUN ON CHROME UI">
 		<parameter name="browser" value="chrome"/>
-		<parameter name="url" value="ngoaihang88.com"/>
+		<parameter name="url" value="tai789.net/"/>
 		<parameter name="invocationCount" value="2"/>
 		<parameter name="sleepAfterTest" value="1"/>
 		<classes>
-			<class name="Sites.NgoaiHang88" />
+			<class name="Sites.Tai789" />
 		</classes>
 	</test>
 

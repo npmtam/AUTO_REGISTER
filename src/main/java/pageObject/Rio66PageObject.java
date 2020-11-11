@@ -87,7 +87,7 @@ public class Rio66PageObject extends AbstractPage {
         while (isElementDisplayed(Rio66UI.ERROR_CAPTCHA)) {
             inputToUserName(backupUsername);
             getCaptchaImgBase64();
-//                sleepInSecond(5);
+            solveCaptcha(Constants.API_KEY);
             inputToCaptchaTextbox(Constants.CAPTCHA_SOLVED);
             clickToElement(Rio66UI.REGISTER_BUTTON);
             break;

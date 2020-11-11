@@ -57,6 +57,7 @@ public class AbstractTest {
                 WebDriverManager.chromedriver().setup();
                 ChromeOptions option3 = new ChromeOptions();
                 option3.addArguments("--disable-notifications");
+                option3.addArguments("--incognito");
                 option3.setExperimentalOption("useAutomationExtension", false);
                 option3.setExperimentalOption("useAutomationExtension", false);
                 option3.setExperimentalOption("excludeSwitches", Collections.singletonList("enable-automation"));

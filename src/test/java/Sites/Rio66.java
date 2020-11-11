@@ -35,26 +35,38 @@ public class Rio66 extends AbstractTest {
             userName = rioPage.getLastNameRandom() + rioPage.getFirstNameRandom() + rioPage.getRandomNumber();
             password = rioPage.getLastNameRandom() + rioPage.getRandomNumber();
             fullName = rioPage.getFirstNameRandom() + rioPage.getLastNameRandom() + rioPage.getRandomNumber();
-            apiKey = "b73d2cdf3ba11f3dbdb8b77d4eb06281";
 
+            log.info("Access URL");
             driver.get("http://" + url);
+            rioPage.sleepInSecond(22);
 
+            log.info("Rio66 - Input username");
             rioPage.inputToUserName(userName);
+
+            log.info("Rio66 - Input password");
             rioPage.inputToPassword(password);
+
+            log.info("Rio66 - Confirm password");
             rioPage.inputToConfirmPassword(password);
 
+            log.info("Rio66 - Solving captcha and get result form recaptcha");
             String captchaSolver = rioPage.solveCaptcha(Constants.API_KEY);
             rioPage.inputToCaptchaTextbox(captchaSolver);
 
+            log.info("Rio66 - Click to register");
             rioPage.clickToRegisterButton();
 
+            log.info("Rio66 - Input to full name");
             rioPage.inputFullNameTextbox(fullName);
+
+            log.info("Rio66 - Click to confirm register");
             rioPage.clickToConfirmRegister();
 
             String currentURL = rioPage.getCurrentPageURL();
 
             verifyTrue(rioPage.isTheWelcomeMsgDisplay());
             if (Constants.REGISTERED) {
+                log.info("Write data to CSV");
                 rioPage.writeDataToCsv(userName, password, currentURL, Constants.IP_ADDRESS);
 //            Constants.ACCOUNTS_SUCCESS.add(i);
             }

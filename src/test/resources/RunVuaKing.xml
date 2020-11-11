@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<suite name="Check request Now" parallel="none">
+<suite name="Auto Bet Sites" parallel="none">
 
 
 	<test name="RUN ON CHROME UI">
 		<parameter name="browser" value="chrome"/>
-		<parameter name="url" value="vuaking.net"/>
+		<parameter name="url" value="taixiumaxclub.com/vit/"/>
 		<parameter name="invocationCount" value="1"/>
 		<parameter name="sleepAfterTest" value="2"/>
 		<classes>

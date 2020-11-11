@@ -8,7 +8,7 @@ import org.openqa.selenium.WebDriver;
 import pageUI.VuaKingUI;
 
 public class VuaKingPageObject extends AbstractPage {
-    WebDriver driver;
+    private WebDriver driver;
 
     public VuaKingPageObject(WebDriver driver) {
         super(driver);

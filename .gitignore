@@ -1,5 +1,7 @@
 /target/
 /.idea/
 /logs/
-/.log
+*.log
+*.csv
+
 
