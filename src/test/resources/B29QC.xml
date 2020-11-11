@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="Auto Bet Sites" parallel="none">
+
+
+	<test name="RUN ON CHROME UI">
+		<parameter name="browser" value="chrome"/>
+		<parameter name="url" value="jbo064.com"/>
+		<parameter name="invocationCount" value="2"/>
+		<parameter name="sleepAfterTest" value="2"/>
+		<classes>
+			<class name="Sites.Jbo064" />
+		</classes>
+	</test>
+
+</suite> <!-- Suite -->
