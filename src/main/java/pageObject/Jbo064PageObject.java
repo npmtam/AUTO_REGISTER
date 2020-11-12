@@ -68,15 +68,8 @@ public class Jbo064PageObject extends AbstractPage {
         return getCurrentPageURL();
     }
 
-//    public boolean isTheWelcomeMsgDisplay() {
-////        waitToElementVisible(Rio66UI.WELCOME_MSG);
-////        return getTextElement(Rio66UI.WELCOME_MSG).contains("Cảm ơn bạn đã đăng ký");
-//        boolean isWelcomeMsgDisplay = isElementDisplayed(Rio66UI.WELCOME_MSG);
-//        if (isWelcomeMsgDisplay) {
-//            Constants.REGISTERED = true;
-//        } else {
-//            Constants.REGISTERED = false;
-//        }
-//        return isWelcomeMsgDisplay;
-//    }
+    public boolean isUserInformationDisplay() {
+        waitToElementVisible(Jbo064UI.USERNAME_INFORMATION);
+        return isElementDisplayed(Jbo064UI.USERNAME_INFORMATION);
+    }
 }

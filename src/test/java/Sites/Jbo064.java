@@ -10,6 +10,8 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import pageObject.Jbo064PageObject;
 import pageObject.VuaKingPageObject;
+import pageUI.Jbo064UI;
+import pageUI.Ngoaihang88UI;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -72,8 +74,35 @@ public class Jbo064 extends AbstractTest {
             String currentURL = jbo064Page.getCurrentURL();
 
 
-//            log.info("Jbo064 - Check the registration successfully");
-//            verifyTrue(vuakingPage.isLogoDisplayed());
+            log.info("Jbo064 - Check the registration successfully");
+            verifyTrue(jbo064Page.isUserInformationDisplay());
+
+
+            //If user name error message appears
+            if (jbo064Page.isElementPresentInDOM(Jbo064UI.INVALID_USERNAME_MESSAGE)) {
+                log.info("Jbo064 - Username invalid");
+                userName = jbo064Page.getLastNameRandomForJbo064() + jbo064Page.getRandomNumber();
+                jbo064Page.inputToUserName(userName);
+                jbo064Page.clickToRegisterButton();
+            }
+
+            //If phone number error message appears
+            if (jbo064Page.isElementPresentInDOM(Jbo064UI.INVALID_PHONENUMBER_MESSAGE)) {
+                log.info("Jbo064 - Phonenumber invalid");
+                phoneNumber = jbo064Page.getPhoneNumberRandom();
+                jbo064Page.inputToPhoneNumber(phoneNumber);
+                jbo064Page.clickToRegisterButton();
+            }
+
+            //If phone password error message appears
+            if (jbo064Page.isElementPresentInDOM(Jbo064UI.CONFIRM_PASSWORD_TEXTBOX)) {
+                log.info("Jbo064 - Password invalid");
+                password = jbo064Page.getLastNameRandom() + jbo064Page.getRandomNumber();
+                jbo064Page.inputToPassword(password);
+                jbo064Page.clickToRegisterButton();
+            }
+
+
 
             log.info("Jbo064 - Check registration and write data to csv");
             if(Constants.REGISTERED){
