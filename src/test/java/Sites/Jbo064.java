@@ -95,7 +95,7 @@ public class Jbo064 extends AbstractTest {
             }
 
             //If phone password error message appears
-            if (jbo064Page.isElementPresentInDOM(Jbo064UI.CONFIRM_PASSWORD_TEXTBOX)) {
+            if (jbo064Page.isElementPresentInDOM(Jbo064UI.INVALID_PASSWORD_MESSAGE)) {
                 log.info("Jbo064 - Password invalid");
                 password = jbo064Page.getLastNameRandom() + jbo064Page.getRandomNumber();
                 jbo064Page.inputToPassword(password);
