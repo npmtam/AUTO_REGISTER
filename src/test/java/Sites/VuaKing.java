@@ -12,6 +12,7 @@ import pageObject.VuaKingPageObject;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Locale;
 import java.util.Scanner;
 
@@ -67,7 +68,11 @@ public class VuaKing extends AbstractTest {
 
             log.info("Vuaking - Check registration and write data to csv");
             if(Constants.REGISTERED){
-                vuakingPage.writeDataToCsv(userName, password, currentURL, Constants.IP_ADDRESS);
+                try {
+                    vuakingPage.appendDataToExcel(userName, password, currentURL, Constants.IP_ADDRESS);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
                 Constants.ACCOUNTS_SUCCESS.add(i);
             }
 

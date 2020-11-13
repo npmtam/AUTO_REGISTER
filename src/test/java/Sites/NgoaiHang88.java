@@ -10,6 +10,7 @@ import org.testng.annotations.Test;
 import pageObject.Ngoaihang88PageObject;
 import pageUI.Ngoaihang88UI;
 
+import java.io.IOException;
 import java.util.Locale;
 
 public class NgoaiHang88 extends AbstractTest {
@@ -88,7 +89,12 @@ public class NgoaiHang88 extends AbstractTest {
             if(isSuccess){
                 Constants.REGISTERED = true;
                 log.info("NgoaiHang88 - Write data to file");
-                ngoaihang88Page.writeDataToCsv(userName, password, ngoaihang88Page.getCurrentPageURL(), Constants.IP_ADDRESS);
+                try {
+                    System.out.println(userName);
+                    ngoaihang88Page.appendDataToExcel(userName, password, ngoaihang88Page.getCurrentPageURL(), Constants.IP_ADDRESS);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }else {
                 Constants.REGISTERED = false;
             }

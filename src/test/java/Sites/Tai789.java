@@ -6,6 +6,9 @@ import org.openqa.selenium.WebDriver;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import pageObject.Tai789PageObject;
+import pageUI.Tai789UI;
+
+import java.io.IOException;
 
 public class Tai789 extends AbstractTest {
     private WebDriver driver;
@@ -43,13 +46,15 @@ public class Tai789 extends AbstractTest {
             log.info("Tai789 - Click to register button");
             tai789Page.clickToRegisterButton();
 
-            tai789Page.sleepInSecond(2);
-
             if(driver.getTitle().equalsIgnoreCase("789 - Game bài số 1 Việt Nam")){
                 String afterRegisterURL = driver.getCurrentUrl();
                 Constants.REGISTERED = true;
                 log.info("Tai789 - Write data to csv");
-                tai789Page.writeDataToCsv(userName, password, afterRegisterURL, Constants.IP_ADDRESS);
+                try {
+                    tai789Page.appendDataToExcel(userName, password, afterRegisterURL, Constants.IP_ADDRESS);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }else{
                 Constants.REGISTERED = false;
             }

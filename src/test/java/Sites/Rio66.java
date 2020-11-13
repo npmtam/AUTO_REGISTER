@@ -10,6 +10,8 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import pageObject.Rio66PageObject;
 
+import java.io.IOException;
+
 public class Rio66 extends AbstractTest {
     private WebDriver driver;
     private Rio66PageObject rioPage;
@@ -67,7 +69,11 @@ public class Rio66 extends AbstractTest {
             verifyTrue(rioPage.isTheWelcomeMsgDisplay());
             if (Constants.REGISTERED) {
                 log.info("Write data to CSV");
-                rioPage.writeDataToCsv(userName, password, currentURL, Constants.IP_ADDRESS);
+                try {
+                    rioPage.appendDataToExcel(userName, password, currentURL, Constants.IP_ADDRESS);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
 //            Constants.ACCOUNTS_SUCCESS.add(i);
             }
 

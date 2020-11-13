@@ -8,6 +8,8 @@ import org.testng.annotations.Test;
 import pageObject.B29QCPageObject;
 import pageUI.B29QCUI;
 
+import java.io.IOException;
+
 public class B29QC extends AbstractTest {
     private WebDriver driver;
     private B29QCPageObject b29cPage;
@@ -59,7 +61,11 @@ public class B29QC extends AbstractTest {
             if(b29cPage.isElementPresentInDOM(B29QCUI.SUCCESS_HTML)){
                 Constants.REGISTERED = true;
                 log.info("B29QC - Write Data to CSV");
-                b29cPage.writeDataToCsv(userName, password, currentURL, Constants.IP_ADDRESS);
+                try {
+                    b29cPage.appendDataToExcel(userName, password, currentURL, Constants.IP_ADDRESS);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }else{
                 Constants.REGISTERED = false;
             }

@@ -15,6 +15,7 @@ import pageUI.Ngoaihang88UI;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Scanner;
 
 public class Jbo064 extends AbstractTest {
@@ -106,7 +107,11 @@ public class Jbo064 extends AbstractTest {
 
             log.info("Jbo064 - Check registration and write data to csv");
             if(Constants.REGISTERED){
-                jbo064Page.writeDataToCsv(userName, password, currentURL, Constants.IP_ADDRESS);
+                try {
+                    jbo064Page.appendDataToExcel(userName, password, currentURL, Constants.IP_ADDRESS);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
                 Constants.ACCOUNTS_SUCCESS.add(i);
             }
 
